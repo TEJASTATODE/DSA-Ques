@@ -2,6 +2,8 @@
 brute force
 */
 package Arrays;
+import java.util.Set;
+import java.util.HashSet;   
 import java.util.Arrays;
 public class sumArray {
     public static void main(String[] args){
@@ -10,6 +12,7 @@ public class sumArray {
         int n=arr.length;
         isSumPair(arr,n,target);
         isSumPairOptimized(arr,n,target);
+        isSumPairHashSet(arr,n,target);
 }
 
     public static void isSumPair(int arr[],int n,int target){
@@ -42,5 +45,16 @@ public class sumArray {
             }
         }
     }
-}
 
+    /* using hash set */
+    public static void isSumPairHashSet(int arr[],int n,int target){
+        HashSet<Integer> set=new HashSet<>();
+        for(int i=0;i<n;i++){
+            int complement=target-arr[i];
+            if(set.contains(complement)){
+                System.out.println("The pair is ("+arr[i]+","+complement+")");
+            }
+            set.add(arr[i]);    
+        }
+    }
+}
